@@ -16,24 +16,24 @@
   <meta name="author" content="fliggy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Java序列化与反序列化介绍Java序列化就是指把Java对象转换为字节序列的过程，反序列化就是指把字节序列恢复为Java对象的过程。 作用序列化最重要的作用：在传递和保存对象时.保证对象的完整性和可传递性。对象转换为有序字节流,以便在网络上传输或者保存在本地文件中。 反序列化的最重要的作用：根据字节流中保存的对象状态及描述信息，通过反序列化重建对象。 总结：核心作用就是对象状态的保存和重建。（整">
+    <meta name="description" content="不要总是羡慕别人的成功，如果大家都可以像哥哥一样坚持渗透测试两年半的话，那么大家都会成为优秀的红队了。 Java反序列化漏洞产生的原因只要服务端反序列化数据，客户端传递类的readObject中代码会自动执行，给予攻击者在服务器上运行代码的能力。 可能的形式1.入口类的readObject直接调用危险方法。（在实际情况中这种很难存在，因为已知readObject一定会被执行的情况下再加入危险方法，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java反序列化基础一">
-<meta property="og:url" content="https://fliggyaa.github.io/2023/10/17/2023-10-17-java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="java反序列化基础二">
+<meta property="og:url" content="https://fliggyaa.github.io/2023/10/18/2023-10-18-java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="fliggy">
-<meta property="og:description" content="Java序列化与反序列化介绍Java序列化就是指把Java对象转换为字节序列的过程，反序列化就是指把字节序列恢复为Java对象的过程。 作用序列化最重要的作用：在传递和保存对象时.保证对象的完整性和可传递性。对象转换为有序字节流,以便在网络上传输或者保存在本地文件中。 反序列化的最重要的作用：根据字节流中保存的对象状态及描述信息，通过反序列化重建对象。 总结：核心作用就是对象状态的保存和重建。（整">
+<meta property="og:description" content="不要总是羡慕别人的成功，如果大家都可以像哥哥一样坚持渗透测试两年半的话，那么大家都会成为优秀的红队了。 Java反序列化漏洞产生的原因只要服务端反序列化数据，客户端传递类的readObject中代码会自动执行，给予攻击者在服务器上运行代码的能力。 可能的形式1.入口类的readObject直接调用危险方法。（在实际情况中这种很难存在，因为已知readObject一定会被执行的情况下再加入危险方法，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://fliggyaa.github.io/img/avatar.png">
-<meta property="article:published_time" content="2023-10-17T06:44:11.000Z">
-<meta property="article:modified_time" content="2023-10-18T02:54:04.655Z">
+<meta property="og:image" content="https://fliggyaa.github.io/img/ikun.png">
+<meta property="article:published_time" content="2023-10-18T02:47:48.000Z">
+<meta property="article:modified_time" content="2023-10-18T03:51:20.147Z">
 <meta property="article:author" content="fliggy">
 <meta property="article:tag" content="Java安全">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://fliggyaa.github.io/img/avatar.png">
+<meta name="twitter:image" content="https://fliggyaa.github.io/img/ikun.png">
   
   
   
-  <title>java反序列化基础一 - fliggy</title>
+  <title>java反序列化基础二 - fliggy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,13 +222,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/avatar.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/ikun_header.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="java反序列化基础一"></span>
+            <span id="subtitle" data-typed-text="java反序列化基础二"></span>
           
         </div>
 
@@ -239,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-17 14:44" pubdate>
-          2023年10月17日 下午
+        <time datetime="2023-10-18 10:47" pubdate>
+          2023年10月18日 上午
         </time>
       </span>
     
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.7k 字
         
       </span>
     
@@ -307,26 +307,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">java反序列化基础一</h1>
+            <h1 id="seo-header">java反序列化基础二</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Java序列化与反序列化"><a href="#Java序列化与反序列化" class="headerlink" title="Java序列化与反序列化"></a>Java序列化与反序列化</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Java序列化就是指把Java对象转换为字节序列的过程，反序列化就是指把字节序列恢复为Java对象的过程。</p>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>序列化最重要的作用：在传递和保存对象时.保证对象的完整性和可传递性。对象转换为有序字节流,以便在网络上传输或者保存在本地文件中。</p>
-<p>反序列化的最重要的作用：根据字节流中保存的对象状态及描述信息，通过反序列化重建对象。</p>
-<p>总结：核心作用就是对象状态的保存和重建。（整个过程核心点就是字节流中所保存的对象状态及描述信息）</p>
-<h3 id="利用代码"><a href="#利用代码" class="headerlink" title="利用代码"></a>利用代码</h3><p>首先创建一个Person类，保证其继承Serializable使其可以被进行序列化反序列化操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.example;<br><br><span class="hljs-keyword">import</span> java.io.Serializable;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br><br>    <span class="hljs-keyword">public</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span>&#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+                <p>不要总是羡慕别人的成功，如果大家都可以像哥哥一样坚持渗透测试两年半的话，那么大家都会成为优秀的红队了。</p>
+<h1 id="Java反序列化漏洞"><a href="#Java反序列化漏洞" class="headerlink" title="Java反序列化漏洞"></a>Java反序列化漏洞</h1><h3 id="产生的原因"><a href="#产生的原因" class="headerlink" title="产生的原因"></a>产生的原因</h3><p>只要服务端反序列化数据，客户端传递类的readObject中代码会自动执行，给予攻击者在服务器上运行代码的能力。</p>
+<h3 id="可能的形式"><a href="#可能的形式" class="headerlink" title="可能的形式"></a>可能的形式</h3><p>1.入口类的readObject直接调用危险方法。（在实际情况中这种很难存在，因为已知readObject一定会被执行的情况下再加入危险方法，这样的程序员一般会被拉去枪毙。）</p>
+<p>2.入口类参数中包含可控类，该类有危险方法，readObject时调用。</p>
+<p>3.入口类参数中包含可控类，该类又调用其他有危险方法的类，readObject时调用。<br>比如类型定义为Object，调用equals&#x2F;hashcode&#x2F;toString</p>
+<p>4.构造函数&#x2F;静态代码块等类加载时隐式执行。</p>
+<h3 id="共同条件"><a href="#共同条件" class="headerlink" title="共同条件"></a>共同条件</h3><p>继承Serializable(保证可以被序列化与反序列化)</p>
+<p>入口类&emsp;&emsp;[重写readObject(需要调用下一步的代码)&emsp;&emsp;参数类型宽泛(可以往里面任意传) &emsp;&emsp;最好jdk自带(可以通用)]&emsp;&emsp;例如：Map对象</p>
+<p>调用链&emsp;&emsp;</p>
+<p>执行类 sink（rce SSRF 写文件）</p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>我们以入口类的readObject直接调用危险方法为例来实现一次反序列化攻击的流程。</p>
+<p>先自定义一个可以被反序列化的类，并且重写readObject</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.ObjectInputStream;<br><span class="hljs-keyword">import</span> java.io.Serializable;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">public</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span>&#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readObject</span><span class="hljs-params">(ObjectInputStream ois)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException&#123;<br>        ois.defaultReadObject();<br>        Runtime.getRuntime().exec(<span class="hljs-string">&quot;calc&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>序列化的过程。通过ObjectOutputStream创建ser.bin文件，并且通过writeObject将序列化的字节流写入ser.bin。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.example;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">serializeTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException &#123;<br><br>        <span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">&quot;aa&quot;</span>,<span class="hljs-number">22</span>);<br>        serialize(person);<br><br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">serialize</span><span class="hljs-params">(Object obj)</span> <span class="hljs-keyword">throws</span> IOException&#123;<br>        <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">oos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;ser.bin&quot;</span>));<br>        oos.writeObject(obj);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>之后实例化并且将这个类序列化，保存在ser.bin文件中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SerializePerson</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">&quot;aa&quot;</span>, <span class="hljs-number">22</span>);<br>        <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">oos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;ser.bin&quot;</span>));<br>        oos.writeObject(person);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>反序列化的过程。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.example;<br><br><span class="hljs-keyword">import</span> java.io.FileInputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.ObjectInputStream;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnserializeTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">unserialize</span><span class="hljs-params">(String Filename)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException&#123;<br>        <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">ois</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(Filename));<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> ois.readObject();<br>        System.out.println(obj);<br>        <span class="hljs-keyword">return</span> obj;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        <span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> (Person) unserialize(<span class="hljs-string">&quot;ser.bin&quot;</span>);<br>        System.out.println(person);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>ser.bin内容</p>
-<p><img src="/2023/10/17/2023-10-17-java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/image-20231017152940263-1697527793094-1.png" srcset="/img/loading.gif" lazyload alt="image-20231017152940263"></p>
+<p>读取ser.bin，反序列化，执行readObject，弹出计算器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">unSerializePerson</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException &#123;<br>        <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">ois</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;ser.bin&quot;</span>));<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> ois.readObject();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>成功执行<br><img src="/2023/10/18/2023-10-18-java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/image.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
 
                 
               </div>
@@ -372,8 +377,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>java反序列化基础一</div>
-      <div>https://fliggyaa.github.io/2023/10/17/2023-10-17-java反序列化基础/</div>
+      <div>java反序列化基础二</div>
+      <div>https://fliggyaa.github.io/2023/10/18/2023-10-18-java反序列化基础/</div>
     </div>
     <div class="license-meta">
       
@@ -385,7 +390,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月17日</div>
+          <div>2023年10月18日</div>
         </div>
       
       
@@ -417,18 +422,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/18/2023-10-18-java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/" title="java反序列化基础二">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">java反序列化基础二</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/16/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="测试文章">
-                        <span class="hidden-mobile">测试文章</span>
+                      <a href="/2023/10/17/2023-10-17-java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/" title="java反序列化基础一">
+                        <span class="hidden-mobile">java反序列化基础一</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
