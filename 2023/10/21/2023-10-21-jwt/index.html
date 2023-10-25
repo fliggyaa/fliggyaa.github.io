@@ -16,16 +16,16 @@
   <meta name="author" content="fliggy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="而我们又是谁的故事中的甲乙丙丁呢？ Java web token&amp;emsp;&amp;emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。 &amp;emsp;&amp;emsp;jwt网址：https:&#x2F;&#x2F;jwt.io&#x2F; 简介&amp;emsp;&amp;emsp;通俗地说，JW">
+    <meta name="description" content="而我们又是谁的故事中的甲乙丙丁呢？ Java Web Token&amp;emsp;&amp;emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。 &amp;emsp;&amp;emsp;jwt网址：https:&#x2F;&#x2F;jwt.io&#x2F; 简介&amp;emsp;&amp;emsp;通俗地说，JW">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jwt（一）">
 <meta property="og:url" content="https://fliggyaa.github.io/2023/10/21/2023-10-21-jwt/index.html">
 <meta property="og:site_name" content="fliggy">
-<meta property="og:description" content="而我们又是谁的故事中的甲乙丙丁呢？ Java web token&amp;emsp;&amp;emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。 &amp;emsp;&amp;emsp;jwt网址：https:&#x2F;&#x2F;jwt.io&#x2F; 简介&amp;emsp;&amp;emsp;通俗地说，JW">
+<meta property="og:description" content="而我们又是谁的故事中的甲乙丙丁呢？ Java Web Token&amp;emsp;&amp;emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。 &amp;emsp;&amp;emsp;jwt网址：https:&#x2F;&#x2F;jwt.io&#x2F; 简介&amp;emsp;&amp;emsp;通俗地说，JW">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://fliggyaa.github.io/img/beat.jpg">
 <meta property="article:published_time" content="2023-10-21T14:08:36.000Z">
-<meta property="article:modified_time" content="2023-10-25T00:53:59.851Z">
+<meta property="article:modified_time" content="2023-10-25T01:00:20.226Z">
 <meta property="article:author" content="fliggy">
 <meta property="article:tag" content="jwt">
 <meta name="twitter:card" content="summary_large_image">
@@ -313,7 +313,7 @@
               <div class="markdown-body">
                 
                 <p>而我们又是谁的故事中的甲乙丙丁呢？</p>
-<h1 id="Java-web-token"><a href="#Java-web-token" class="headerlink" title="Java web token"></a>Java web token</h1><p>&emsp;&emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。</p>
+<h1 id="Java-Web-Token"><a href="#Java-Web-Token" class="headerlink" title="Java Web Token"></a>Java Web Token</h1><p>&emsp;&emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。</p>
 <p>&emsp;&emsp;jwt网址：<a target="_blank" rel="noopener" href="https://jwt.io/">https://jwt.io/</a></p>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;通俗地说，JWT的本质就是一个字符串，它是将用户信息保存到一个Json字符串中，然后进行编码后得到一个JWT token，并且这个JWT token带有签名信息，接收后可以校验是否被篡改，所以可以用于在各方之间安全地将信息作为Json对象传输。JWT的认证流程如下：</p>
 <p>1.首先，前端通过Web表单将自己的用户名和密码发送到后端的接口，这个过程一般是一个POST请求。建议的方式是通过SSL加密的传输(HTTPS)，从而避免敏感信息被嗅探</p>
