@@ -16,24 +16,24 @@
   <meta name="author" content="fliggy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="有人说希斯莱杰演出了最棒的小丑,也有人说杰昆菲尼克斯的小丑演的最入神,实际上我们都知道,是你,我的朋友,当你出场的时候我们都被你戏剧性的表演逗笑了,你才是当之无愧的小丑。 Java反射什么是Java反射&amp;emsp;&amp;emsp;反射是java语言的一个特性，它允程序在运行时（注意不是编译的时候）来进行自我检查并且对内部的成员进行操作。反射是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方">
+    <meta name="description" content="而我们又是谁的故事中的甲乙丙丁呢？ Java web token&amp;emsp;&amp;emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。 &amp;emsp;&amp;emsp;jwt网址：https:&#x2F;&#x2F;jwt.io&#x2F; 简介&amp;emsp;&amp;emsp;通俗地说，JW">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java反射一">
-<meta property="og:url" content="https://fliggyaa.github.io/2023/10/18/2023-10-18-java%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:title" content="jwt（一）">
+<meta property="og:url" content="https://fliggyaa.github.io/2023/10/21/2023-10-21-jwt/index.html">
 <meta property="og:site_name" content="fliggy">
-<meta property="og:description" content="有人说希斯莱杰演出了最棒的小丑,也有人说杰昆菲尼克斯的小丑演的最入神,实际上我们都知道,是你,我的朋友,当你出场的时候我们都被你戏剧性的表演逗笑了,你才是当之无愧的小丑。 Java反射什么是Java反射&amp;emsp;&amp;emsp;反射是java语言的一个特性，它允程序在运行时（注意不是编译的时候）来进行自我检查并且对内部的成员进行操作。反射是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方">
+<meta property="og:description" content="而我们又是谁的故事中的甲乙丙丁呢？ Java web token&amp;emsp;&amp;emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。 &amp;emsp;&amp;emsp;jwt网址：https:&#x2F;&#x2F;jwt.io&#x2F; 简介&amp;emsp;&amp;emsp;通俗地说，JW">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://fliggyaa.github.io/img/bug.png">
-<meta property="article:published_time" content="2023-10-18T08:50:27.000Z">
-<meta property="article:modified_time" content="2023-10-19T02:24:49.302Z">
+<meta property="og:image" content="https://fliggyaa.github.io/img/beat.jpg">
+<meta property="article:published_time" content="2023-10-21T14:08:36.000Z">
+<meta property="article:modified_time" content="2023-10-25T00:53:59.851Z">
 <meta property="article:author" content="fliggy">
-<meta property="article:tag" content="Java安全">
+<meta property="article:tag" content="jwt">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://fliggyaa.github.io/img/bug.png">
+<meta name="twitter:image" content="https://fliggyaa.github.io/img/beat.jpg">
   
   
   
-  <title>Java反射一 - fliggy</title>
+  <title>jwt（一） - fliggy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,13 +222,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/java.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/beat.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Java反射一"></span>
+            <span id="subtitle" data-typed-text="jwt（一）"></span>
           
         </div>
 
@@ -239,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-18 16:50" pubdate>
-          2023年10月18日 下午
+        <time datetime="2023-10-21 22:08" pubdate>
+          2023年10月21日 晚上
         </time>
       </span>
     
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.7k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          18 分钟
+          23 分钟
         
       </span>
     
@@ -307,26 +307,43 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Java反射一</h1>
+            <h1 id="seo-header">jwt（一）</h1>
             
             
               <div class="markdown-body">
                 
-                <p>有人说希斯莱杰演出了最棒的小丑,也有人说杰昆菲尼克斯的小丑演的最入神,实际上我们都知道,是你,我的朋友,当你出场的时候我们都被你戏剧性的表演逗笑了,你才是当之无愧的小丑。</p>
-<h1 id="Java反射"><a href="#Java反射" class="headerlink" title="Java反射"></a>Java反射</h1><h3 id="什么是Java反射"><a href="#什么是Java反射" class="headerlink" title="什么是Java反射"></a>什么是Java反射</h3><p>&emsp;&emsp;反射是java语言的一个特性，它允程序在运行时（注意不是编译的时候）来进行自我检查并<br>且对内部的成员进行操作。反射是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法<br>,对于任意一个对象，都能够调用它的任意方法和属性,这种动态获取信息以及动态调用对象方法的功能称为<br>java语言的反射机制。</p>
-<p>&emsp;&emsp;那么通过这样的说法直接来获取一个概念非常抽象，但是我们假如存在这样一个场景，存在着这样一个Person类，存在两个属性，一个public属性和一个private属性，并且已经定义了参数，我们需要在代码运行的过程中去修改这两个属性的参数，就可以通过反射的方法直接进行调用。</p>
-<p>&emsp;&emsp;这里同时也提到在不同类中调用私有属性的一些方式：</p>
-<p>&emsp;&emsp;1.在含私有属性的类中创建公有方法进行操作。</p>
-<p>&emsp;&emsp;2.通过反射进行操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;小明&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">age</span> <span class="hljs-operator">=</span> <span class="hljs-number">28</span>;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getAge</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> age;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <p>而我们又是谁的故事中的甲乙丙丁呢？</p>
+<h1 id="Java-web-token"><a href="#Java-web-token" class="headerlink" title="Java web token"></a>Java web token</h1><p>&emsp;&emsp;JSON Web Token (JWT)是一个开放标准(RFC 7519)，它定义了一种紧凑的、自包含的方式，用于作为JSON对象在各方之间安全地传输信息。该信息可以被验证和信任，因为它是数字签名的。</p>
+<p>&emsp;&emsp;jwt网址：<a target="_blank" rel="noopener" href="https://jwt.io/">https://jwt.io/</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;通俗地说，JWT的本质就是一个字符串，它是将用户信息保存到一个Json字符串中，然后进行编码后得到一个JWT token，并且这个JWT token带有签名信息，接收后可以校验是否被篡改，所以可以用于在各方之间安全地将信息作为Json对象传输。JWT的认证流程如下：</p>
+<p>1.首先，前端通过Web表单将自己的用户名和密码发送到后端的接口，这个过程一般是一个POST请求。建议的方式是通过SSL加密的传输(HTTPS)，从而避免敏感信息被嗅探</p>
+<p>2.后端核对用户名和密码成功后，将包含用户信息的数据作为JWT的Payload，将其与JWT Header分别进行Base64编码拼接后签名，形成一个JWT Token，形成的JWT Token就是一个如同lll.zzz.xxx的字符串</p>
+<p>3.后端将JWT Token字符串作为登录成功的结果返回给前端。前端可以将返回的结果保存在浏览器中，退出登录时删除保存的JWT Token即可</p>
+<p>4.前端在每次请求时将JWT Token放入HTTP请求头中的Authorization属性中(解决XSS和XSRF问题)</p>
+<p>5.后端检查前端传过来的JWT Token，验证其有效性，比如检查签名是否正确、是否过期、token的接收方是否是自己等等</p>
+<p>6.验证通过后，后端解析出JWT Token中包含的用户信息，进行其他逻辑操作(一般是根据用户信息得到权限等)，返回结果</p>
+<p>&emsp;&emsp;了解详情参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhuangzilian/p/15911689.html">https://www.cnblogs.com/zhuangzilian/p/15911689.html</a></p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>&emsp;&emsp;本身的介绍是比较抽象的，但是了解其不同的构造方式也是有利于我们进行渗透。</p>
+<p>&emsp;&emsp;下面是jwt本身的结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus">&lt;<span class="hljs-number">1</span>&gt; <br><span class="hljs-function"><span class="hljs-title">base64</span><span class="hljs-params">(header)</span></span><span class="hljs-selector-class">.base64</span>(payload)<br>&lt;<span class="hljs-number">2</span>&gt;<br><span class="hljs-function"><span class="hljs-title">base64</span><span class="hljs-params">(header)</span></span><span class="hljs-selector-class">.base64</span>(payload)<span class="hljs-selector-class">.HMACSHA256</span>(<span class="hljs-built_in">base64urlencode</span>(header)+<span class="hljs-string">&quot;.&quot;</span>+<span class="hljs-built_in">base64urlencode</span>(payload)+secret)<br></code></pre></td></tr></table></figure>
 
-<p>&emsp;&emsp;直接通过实例化对象的方式。直接创建对象打印结果，且这种方法无法直接对私有属性进行调用，而反射则可以解决这一问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>        <span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br>        System.out.println(person.getName());<br>        System.out.println(person.getAge());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="/2023/10/18/2023-10-18-java%E5%8F%8D%E5%B0%84/image.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
-<p>&emsp;&emsp;这里体现了反射的用处，我们可以在没有setter方法的情况下对一个类中的属性进行操作，当然，反射也可以对类中的其他方法进行操作、解决一些类无法进行序列化反序列化等问题，这个在之后碰到了会进行实际补充。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> NoSuchFieldException, IllegalAccessException &#123;<br>        <span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br>        System.out.println(person.getName());<br>        System.out.println(person.getAge());<br><br>        System.out.println(<span class="hljs-string">&quot;************反射***************&quot;</span>);<br>        <span class="hljs-type">Class</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> Person.class;<span class="hljs-comment">//反射创建一个类</span><br>        <span class="hljs-comment">//获取公有属性</span><br>        <span class="hljs-type">Field</span> <span class="hljs-variable">namefield</span> <span class="hljs-operator">=</span> p.getField(<span class="hljs-string">&quot;name&quot;</span>);<br>        namefield.set(person, <span class="hljs-string">&quot;小红&quot;</span>);<br>        <span class="hljs-comment">//获取私有属性</span><br>        <span class="hljs-type">Field</span> <span class="hljs-variable">agefiled</span> <span class="hljs-operator">=</span> p.getDeclaredField(<span class="hljs-string">&quot;age&quot;</span>);<br>        agefiled.setAccessible(<span class="hljs-literal">true</span>);<span class="hljs-comment">//激活私有属性</span><br>        agefiled.set(person, <span class="hljs-number">30</span>);<br><br>        System.out.println(person.getName());<br>        System.out.println(person.getAge());<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<p><img src="/2023/10/18/2023-10-18-java%E5%8F%8D%E5%B0%84/image2.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
-<h3 id="反射中的一些常见操作"><a href="#反射中的一些常见操作" class="headerlink" title="反射中的一些常见操作"></a>反射中的一些常见操作</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-keyword">Class</span>&lt;?&gt; clazz = SomeClass.class<span class="hljs-punctuation">;</span><br><span class="hljs-comment">// 获取类名</span><br>String className = clazz.getName()<span class="hljs-punctuation">;</span><br><span class="hljs-comment">// 获取父类</span><br><span class="hljs-keyword">Class</span>&lt;?&gt; superClass = clazz.getSuperclass()<span class="hljs-punctuation">;</span><br><span class="hljs-comment">// 获取实现的接口</span><br><span class="hljs-keyword">Class</span>&lt;?&gt;[] interfaces = clazz.getInterfaces()<span class="hljs-punctuation">;</span><br><span class="hljs-comment">// 获取构造函数</span><br><span class="hljs-keyword">Constructor</span>&lt;?&gt;[] <span class="hljs-title function_">constructors</span> = <span class="hljs-title function_">clazz</span>.<span class="hljs-title function_">getConstructors</span><span class="hljs-params">()</span>;<br><span class="hljs-comment">// 获取方法</span><br><span class="hljs-keyword">Method</span>[] <span class="hljs-title function_">methods</span> = <span class="hljs-title function_">clazz</span>.<span class="hljs-title function_">getMethods</span><span class="hljs-params">()</span>;<br><span class="hljs-comment">// 获取字段</span><br>Field[] fields = clazz.getFields()<span class="hljs-punctuation">;</span><br></code></pre></td></tr></table></figure>
+<h4 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h4><p>&emsp;&emsp;Header包含了JWT使用的算法和类型等元数据信息，通常使用JSON对象表示并使用Base64编码，Header中包含两个字段：alg和typ<br>alg(algorithm)：指定了使用的加密算法，常见的有HMAC、RSA和ECDSA等算法<br>typ(type)：指定了JWT的类型，通常为JWT</p>
+<p>&emsp;&emsp;下面是一个示例Header：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;alg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;HS256&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;typ&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;JWT&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中alg指定了使用HMAC-SHA256算法进行签名，typ指定了JWT的类型为JWT</p>
+<h4 id="Payload"><a href="#Payload" class="headerlink" title="Payload"></a>Payload</h4><p>&emsp;&emsp;Payload包含了JWT的主要信息，通常使用JSON对象表示并使用Base64编码，Payload中包含三个类型的字段：注册声明、公共声明和私有声明</p>
+<p>&emsp;&emsp;公共声明(Public Claims)：是自定义的字段，用于传递非敏感信息，例如:用户ID、角色等<br>&emsp;&emsp;私有声明(Private Claims)：是自定义的字段，用于传递敏感信息，例如密码、信用卡号等<br>&emsp;&emsp;注册声明(Registered Claims)：预定义的标准字段，包含了一些JWT的元数据信息，例如:发行者、过期时间等<br>&emsp;&emsp;下面是一个示例Payload：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;sub&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1234567890&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;John Doe&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;iat&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1516239022</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;其中sub表示主题，name表示名称，iat表示JWT的签发时间</p>
+<h4 id="Signature"><a href="#Signature" class="headerlink" title="Signature"></a>Signature</h4><p>&emsp;&emsp;Signature是使用指定算法对Header和Payload进行签名生成的，用于验证JWT的完整性和真实性，Signature的生成方式通常是将Header和Payload连接起来然后使用指定算法对其进行签名，最终将签名结果与Header和Payload一起组成JWT，Signature的生成和验证需要使用相同的密钥，下面是一个示例Signature</p>
+<p>&emsp;&emsp;HMACSHA256(base64UrlEncode(header) + “.” +base64UrlEncode(payload),secret)<br>其中HMACSHA256是使用HMAC SHA256算法进行签名，header和payload是经过Base64编码的Header和Payload，secret是用于签名和验证的密钥，最终将Header、Payload和Signature连接起来用句点(.)分隔就形成了一个完整的JWT，下面是一个示例JWT，其中第一部分是Header，第二部分是Payload，第三部分是Signature，注意JWT 中的每一部分都是经过Base64编码的，但并不是加密的，因此JWT中的信息是可以被解密的</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">eyJhbGciOiJIUzI<span class="hljs-number">1</span><span class="hljs-symbol">NiIsInR5</span>cCI<span class="hljs-number">6</span>IkpX<span class="hljs-attr">VCJ9</span>.eyJzdWIiOiIxMj<span class="hljs-name">M0</span><span class="hljs-symbol">NTY3</span>ODkwIiwibmFtZSI<span class="hljs-number">6</span>Ikpva<span class="hljs-name">G4</span>gR<span class="hljs-name">G9</span>lIiwiaWF<span class="hljs-number">0</span>Ijox<span class="hljs-symbol">NTE2</span>Mj<span class="hljs-name">M5</span>MDIyfQ.SflKxwRJSMeKKF<span class="hljs-number">2</span>QT<span class="hljs-number">4</span>fwpMeJf<span class="hljs-number">36</span>POk<span class="hljs-number">6</span>yJV_adQssw<span class="hljs-number">5</span>c<br></code></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;从本身的结构中我们可以看到，如果只是通过简单的base64拼接我们很容易就可以伪造其token，但是如果采用了第二种方式则对数据进行了校验，可能就需要一些复杂的步骤来进行身份伪造。</p>
+<p>&emsp;&emsp;下面是jwt的官网所给我们提供的图片，通过这张图片很容易就可以看出详细结构。</p>
+<p><img src="/2023/10/21/2023-10-21-jwt/image.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+
                 
               </div>
             
@@ -344,7 +361,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Java%E5%AE%89%E5%85%A8/" class="category-chain-item">Java安全</a>
+  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-chain-item">渗透测试</a>
   
   
 
@@ -359,7 +376,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Java%E5%AE%89%E5%85%A8/" class="print-no-link">#Java安全</a>
+        <a href="/tags/jwt/" class="print-no-link">#jwt</a>
       
     </div>
   
@@ -371,8 +388,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Java反射一</div>
-      <div>https://fliggyaa.github.io/2023/10/18/2023-10-18-java反射/</div>
+      <div>jwt（一）</div>
+      <div>https://fliggyaa.github.io/2023/10/21/2023-10-21-jwt/</div>
     </div>
     <div class="license-meta">
       
@@ -384,7 +401,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月18日</div>
+          <div>2023年10月21日</div>
         </div>
       
       
@@ -416,9 +433,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/20/2023-10-20-URLDNS%E9%93%BE/" title="URLDNS链">
+                      <a href="/2023/10/25/2023-10-25-jwt/" title="jwt（二）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">URLDNS链</span>
+                        <span class="hidden-mobile">jwt（二）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -426,8 +443,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/18/2023-10-18-java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/" title="java反序列化基础（二）">
-                        <span class="hidden-mobile">java反序列化基础（二）</span>
+                      <a href="/2023/10/20/2023-10-20-URLDNS%E9%93%BE/" title="URLDNS链">
+                        <span class="hidden-mobile">URLDNS链</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
