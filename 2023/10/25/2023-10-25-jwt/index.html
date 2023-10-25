@@ -16,16 +16,16 @@
   <meta name="author" content="fliggy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Java Web Token常见的渗透姿势">
+    <meta name="description" content="你会遇到比我更有趣的人，然后在晚霞黄昏后渐渐忘了我。 Java Web Token常见的渗透姿势下面的标题都是百度翻译的，抽象与我无关 1.通过未验证的签名绕过JWT身份验证&amp;emsp;&amp;emsp;靶场地址：https:&#x2F;&#x2F;portswigger.net&#x2F;web-security&#x2F;jwt&#x2F;lab-jwt-authentication-bypass-via-unverified-signature">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jwt（二）">
 <meta property="og:url" content="https://fliggyaa.github.io/2023/10/25/2023-10-25-jwt/index.html">
 <meta property="og:site_name" content="fliggy">
-<meta property="og:description" content="Java Web Token常见的渗透姿势">
+<meta property="og:description" content="你会遇到比我更有趣的人，然后在晚霞黄昏后渐渐忘了我。 Java Web Token常见的渗透姿势下面的标题都是百度翻译的，抽象与我无关 1.通过未验证的签名绕过JWT身份验证&amp;emsp;&amp;emsp;靶场地址：https:&#x2F;&#x2F;portswigger.net&#x2F;web-security&#x2F;jwt&#x2F;lab-jwt-authentication-bypass-via-unverified-signature">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://fliggyaa.github.io/img/beat.jpg">
 <meta property="article:published_time" content="2023-10-25T00:53:02.000Z">
-<meta property="article:modified_time" content="2023-10-25T00:55:36.763Z">
+<meta property="article:modified_time" content="2023-10-25T09:19:15.915Z">
 <meta property="article:author" content="fliggy">
 <meta property="article:tag" content="jwt">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          19 字
+          773 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -312,7 +312,31 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Java-Web-Token"><a href="#Java-Web-Token" class="headerlink" title="Java Web Token"></a>Java Web Token</h1><h3 id="常见的渗透姿势"><a href="#常见的渗透姿势" class="headerlink" title="常见的渗透姿势"></a>常见的渗透姿势</h3>
+                <p>你会遇到比我更有趣的人，然后在晚霞黄昏后渐渐忘了我。</p>
+<h1 id="Java-Web-Token"><a href="#Java-Web-Token" class="headerlink" title="Java Web Token"></a>Java Web Token</h1><h2 id="常见的渗透姿势"><a href="#常见的渗透姿势" class="headerlink" title="常见的渗透姿势"></a>常见的渗透姿势</h2><p>下面的标题都是百度翻译的，抽象与我无关</p>
+<h3 id="1-通过未验证的签名绕过JWT身份验证"><a href="#1-通过未验证的签名绕过JWT身份验证" class="headerlink" title="1.通过未验证的签名绕过JWT身份验证"></a>1.通过未验证的签名绕过JWT身份验证</h3><p>&emsp;&emsp;靶场地址：<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature">https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature</a></p>
+<p>&emsp;&emsp;写了一大堆，TM看不懂，大致意思就是我们有一个账户，然后需要通过admin接口删除carlos这个账号，开整。</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-7.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>&emsp;&emsp;通过账号密码wiener:peter进行登录抓包。<br><img src="/2023/10/25/2023-10-25-jwt/image.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>&emsp;&emsp;在数据包中可以看到JWT，尝试直接修改payload验证签名是否会对信息原始性进行校验。</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-1.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-3.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>&emsp;&emsp;直接将用户名修改为admin进行测试，发现签名不会对信息原始性进行校验。</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-2.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-4.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>&emsp;&emsp;直接调用admin接口（在这里发现只有administrator账户才有权限，注意进行更改），发现存在删除接口，直接删除账户，成功删除。</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-5.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-6.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<h3 id="2-JWT通过有缺陷的签名验证绕过身份验证"><a href="#2-JWT通过有缺陷的签名验证绕过身份验证" class="headerlink" title="2.JWT通过有缺陷的签名验证绕过身份验证"></a>2.JWT通过有缺陷的签名验证绕过身份验证</h3><p>&emsp;&emsp;写了一大堆，TM和上一个一样。</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-8.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>&emsp;&emsp;这里大概意思就是让我们把header中的alg参数改为none,然后不让它验证签名。（说到alg最近碰到了关于nacos加密的问题，后面扩展更多的算法之后可以简单说一说）。</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-9.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>&emsp;&emsp;登录、抓包、拿jwt、解jwt，将alg改为none，将账户改为administrator。</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-10.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-11.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>&emsp;&emsp;不让它验证签名直接把签名删除即可，成功绕过，这里有需要注意不要把.删了，否则不是一个完整的JWT，无法绕过。（实验完成部分如果重复的情况下不再截图）</p>
+<p><img src="/2023/10/25/2023-10-25-jwt/image-13.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+
                 
               </div>
             
