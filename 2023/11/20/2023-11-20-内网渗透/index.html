@@ -16,24 +16,24 @@
   <meta name="author" content="fliggy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="所爱如明月，触手不可得。 Java Web Token渗透文章参考：https:&#x2F;&#x2F;xz.aliyun.com&#x2F;t&#x2F;12906#toc-1 继续靶场 通过弱签名密钥绕过JWT身份验证&amp;emsp;&amp;emsp;前面的一些操作基本都是相同的，而这一个根据名称也能够了解到，需要我们对密钥进行破解，而一般的方式就是暴力破解。我们直接抓一个token去了解这种攻击方式。  &amp;emsp;&amp;emsp;字典，搞里头">
+    <meta name="description" content="概述画个饼先，大概会花上两个月来更新这部分的基础理论，等换了新电脑，会更新一些靶场的内容，一起期待一下吧！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jwt（三）">
-<meta property="og:url" content="https://fliggyaa.github.io/2023/10/27/2023-10-27-jwt/index.html">
+<meta property="og:title" content="内网渗透-简介">
+<meta property="og:url" content="https://fliggyaa.github.io/2023/11/20/2023-11-20-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/index.html">
 <meta property="og:site_name" content="fliggy">
-<meta property="og:description" content="所爱如明月，触手不可得。 Java Web Token渗透文章参考：https:&#x2F;&#x2F;xz.aliyun.com&#x2F;t&#x2F;12906#toc-1 继续靶场 通过弱签名密钥绕过JWT身份验证&amp;emsp;&amp;emsp;前面的一些操作基本都是相同的，而这一个根据名称也能够了解到，需要我们对密钥进行破解，而一般的方式就是暴力破解。我们直接抓一个token去了解这种攻击方式。  &amp;emsp;&amp;emsp;字典，搞里头">
+<meta property="og:description" content="概述画个饼先，大概会花上两个月来更新这部分的基础理论，等换了新电脑，会更新一些靶场的内容，一起期待一下吧！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://fliggyaa.github.io/img/beat.jpg">
-<meta property="article:published_time" content="2023-10-27T00:58:42.000Z">
-<meta property="article:modified_time" content="2023-10-30T03:34:22.018Z">
+<meta property="og:image" content="https://fliggyaa.github.io/img/ameng.jpg">
+<meta property="article:published_time" content="2023-11-20T02:28:03.000Z">
+<meta property="article:modified_time" content="2023-11-20T02:41:25.395Z">
 <meta property="article:author" content="fliggy">
-<meta property="article:tag" content="jwt">
+<meta property="article:tag" content="内网渗透">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://fliggyaa.github.io/img/beat.jpg">
+<meta name="twitter:image" content="https://fliggyaa.github.io/img/ameng.jpg">
   
   
   
-  <title>jwt（三） - fliggy</title>
+  <title>内网渗透-简介 - fliggy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,13 +222,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/beat.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/a.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="jwt（三）"></span>
+            <span id="subtitle" data-typed-text="内网渗透-简介"></span>
           
         </div>
 
@@ -239,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-27 08:58" pubdate>
-          2023年10月27日 早上
+        <time datetime="2023-11-20 10:28" pubdate>
+          2023年11月20日 上午
         </time>
       </span>
     
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          951 字
+          53 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          8 分钟
+          1 分钟
         
       </span>
     
@@ -307,29 +307,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">jwt（三）</h1>
+            <h1 id="seo-header">内网渗透-简介</h1>
             
             
               <div class="markdown-body">
                 
-                <p>所爱如明月，触手不可得。</p>
-<h1 id="Java-Web-Token"><a href="#Java-Web-Token" class="headerlink" title="Java Web Token"></a>Java Web Token</h1><p>渗透文章参考：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12906#toc-1">https://xz.aliyun.com/t/12906#toc-1</a></p>
-<p>继续靶场</p>
-<h3 id="通过弱签名密钥绕过JWT身份验证"><a href="#通过弱签名密钥绕过JWT身份验证" class="headerlink" title="通过弱签名密钥绕过JWT身份验证"></a>通过弱签名密钥绕过JWT身份验证</h3><p>&emsp;&emsp;前面的一些操作基本都是相同的，而这一个根据名称也能够了解到，需要我们对密钥进行破解，而一般的方式就是暴力破解。我们直接抓一个token去了解这种攻击方式。</p>
-<p><img src="/2023/10/27/2023-10-27-jwt/image.png" srcset="/img/loading.gif" lazyload alt="身份认证"></p>
-<p>&emsp;&emsp;字典，搞里头：<a target="_blank" rel="noopener" href="https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list">https://github.com/wallarm/jwt-secrets/blob/master/jwt.secrets.list</a></p>
-<h4 id="hashcat"><a href="#hashcat" class="headerlink" title="hashcat"></a>hashcat</h4><p>&emsp;&emsp;hashcat搞里头：<a target="_blank" rel="noopener" href="https://github.com/hashcat/hashcat">https://github.com/hashcat/hashcat</a></p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#命令格式：</span><br><span class="hljs-attribute">hashcat</span> -a <span class="hljs-number">0</span> -m <span class="hljs-number">16500</span> &lt;jwt&gt; &lt;wordlist&gt;<br><br><span class="hljs-comment">#执行示例：</span><br><span class="hljs-attribute">hashcat</span> -m <span class="hljs-number">16500</span> jwt.txt -a <span class="hljs-number">0</span> secrets.txt --force<br></code></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;跑出来了，这个就是对的</p>
-<p><img src="/2023/10/27/2023-10-27-jwt/image-1.png" srcset="/img/loading.gif" lazyload alt="结果"></p>
-<h4 id="jwt-tool"><a href="#jwt-tool" class="headerlink" title="jwt_tool"></a>jwt_tool</h4><p>&emsp;&emsp;工具，搞里头：<a target="_blank" rel="noopener" href="https://github.com/ticarpi/jwt_tool">https://github.com/ticarpi/jwt_tool</a></p>
-<p>&emsp;&emsp;依赖，搞里头：pip3 install -r .\requirements.txt</p>
-<p>&emsp;&emsp;用法自己看，这里直接说怎么跑</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">pytho<span class="hljs-symbol">n3</span> .\jwt_tool.py eyJraWQiOiJhOGU<span class="hljs-number">0</span>OGU<span class="hljs-number">1</span>My<span class="hljs-number">0</span>yMzE<span class="hljs-number">4</span>LTQ<span class="hljs-number">0</span>OGItOTk<span class="hljs-number">5</span>Zi<span class="hljs-number">1</span>jY<span class="hljs-number">2</span>Y<span class="hljs-number">1</span>ZjU<span class="hljs-number">2</span>MTAyMGEiLCJhbGciOiJIUzI<span class="hljs-number">1</span><span class="hljs-symbol">NiJ9</span>.eyJpc<span class="hljs-number">3</span>MiOiJwb<span class="hljs-number">3</span>J<span class="hljs-number">0</span>c<span class="hljs-number">3</span>dpZ<span class="hljs-number">2</span>dlciIsI<span class="hljs-symbol">nN1</span>YiI<span class="hljs-number">6</span>I<span class="hljs-symbol">ndpZW5</span>lciIsImV<span class="hljs-number">4</span>cCI<span class="hljs-number">6</span>MTY<span class="hljs-number">5</span>ODYz<span class="hljs-symbol">NzA1</span><span class="hljs-symbol">NH0</span>.tt_<span class="hljs-attr">VSJSSaiVrVqX3</span>i<span class="hljs-symbol">NmJksizg3</span>xCiQ<span class="hljs-number">8</span>KJRDTfvHz<span class="hljs-number">9</span>jU -C -d .\jwt-secrets.txt<br></code></pre></td></tr></table></figure>
-
-<p><img src="/2023/10/27/2023-10-27-jwt/image-2.png" srcset="/img/loading.gif" lazyload alt="jwt_tool结果"></p>
-<p>&emsp;&emsp;后面还有一些其他的方法像头部注入、算法混淆等可以去看参考文章，这些可能在很久以后才会加入到文章里面，本系列只是对原文章的一些简化，如果想要详细了解，参考：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12906#toc-1">https://xz.aliyun.com/t/12906#toc-1</a></p>
+                <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>画个饼先，大概会花上两个月来更新这部分的基础理论，等换了新电脑，会更新一些靶场的内容，一起期待一下吧！</p>
 
                 
               </div>
@@ -348,7 +331,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-chain-item">渗透测试</a>
+  <a href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-chain-item">内网渗透</a>
   
   
 
@@ -363,7 +346,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/jwt/" class="print-no-link">#jwt</a>
+        <a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="print-no-link">#内网渗透</a>
       
     </div>
   
@@ -375,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>jwt（三）</div>
-      <div>https://fliggyaa.github.io/2023/10/27/2023-10-27-jwt/</div>
+      <div>内网渗透-简介</div>
+      <div>https://fliggyaa.github.io/2023/11/20/2023-11-20-内网渗透/</div>
     </div>
     <div class="license-meta">
       
@@ -388,7 +371,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月27日</div>
+          <div>2023年11月20日</div>
         </div>
       
       
@@ -420,18 +403,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/20/2023-11-20-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" title="内网渗透-简介">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">内网渗透-简介</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/25/2023-10-25-jwt/" title="jwt（二）">
-                        <span class="hidden-mobile">jwt（二）</span>
+                      <a href="/2023/10/27/2023-10-27-jwt/" title="jwt（三）">
+                        <span class="hidden-mobile">jwt（三）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

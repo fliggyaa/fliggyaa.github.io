@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>内网渗透-简介</title>
+    <link href="/2023/11/20/2023-11-20-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
+    <url>/2023/11/20/2023-11-20-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</url>
+    
+    <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>画个饼先，大概会花上两个月来更新这部分的基础理论，等换了新电脑，会更新一些靶场的内容，一起期待一下吧！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>内网渗透</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>内网渗透</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>jwt（三）</title>
     <link href="/2023/10/27/2023-10-27-jwt/"/>
     <url>/2023/10/27/2023-10-27-jwt/</url>
