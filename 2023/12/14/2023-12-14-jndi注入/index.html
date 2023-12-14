@@ -16,24 +16,24 @@
   <meta name="author" content="fliggy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="你每天总是在计较失去了什么，得到了什么，比别人多得到了什么，比别人少获得了什么，你怎么会觉得这个世界是单纯且美好的呢。 概述&amp;emsp;&amp;emsp;画个饼先，大概会花上两个月来更新这部分的基础理论，等换了新电脑，会更新一些靶场的内容，一起期待一下吧！ 基本概念&amp;emsp;&amp;emsp;内网也叫局域网，是指在某一区域由多台计算机互相连接而成的计算机组。内网的情况往往比较复杂。 工作组&amp;emsp;&amp;em">
+    <meta name="description" content="简介jndi&amp;emsp;&amp;emsp;JNDI全称为Java命名和目录接口。我们可以理解为JNDI提供了两个服务，即命名服务和目录服务。 &amp;emsp;&amp;emsp;JNDI(The java Naming and directory Interface,java命名和目录接口)是一组在Java应用中访问命名和目录服务器的API，命令服务将名称和对象联系起来，使得我们可以使用名称访问对象。 这些命名&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内网渗透-简介">
-<meta property="og:url" content="https://fliggyaa.github.io/2023/11/20/2023-11-20-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/index.html">
+<meta property="og:title" content="jndi注入">
+<meta property="og:url" content="https://fliggyaa.github.io/2023/12/14/2023-12-14-jndi%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="fliggy">
-<meta property="og:description" content="你每天总是在计较失去了什么，得到了什么，比别人多得到了什么，比别人少获得了什么，你怎么会觉得这个世界是单纯且美好的呢。 概述&amp;emsp;&amp;emsp;画个饼先，大概会花上两个月来更新这部分的基础理论，等换了新电脑，会更新一些靶场的内容，一起期待一下吧！ 基本概念&amp;emsp;&amp;emsp;内网也叫局域网，是指在某一区域由多台计算机互相连接而成的计算机组。内网的情况往往比较复杂。 工作组&amp;emsp;&amp;em">
+<meta property="og:description" content="简介jndi&amp;emsp;&amp;emsp;JNDI全称为Java命名和目录接口。我们可以理解为JNDI提供了两个服务，即命名服务和目录服务。 &amp;emsp;&amp;emsp;JNDI(The java Naming and directory Interface,java命名和目录接口)是一组在Java应用中访问命名和目录服务器的API，命令服务将名称和对象联系起来，使得我们可以使用名称访问对象。 这些命名&amp;#">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://fliggyaa.github.io/img/ameng.webp">
-<meta property="article:published_time" content="2023-11-20T02:28:03.000Z">
-<meta property="article:modified_time" content="2023-11-20T09:06:29.923Z">
+<meta property="og:image" content="https://fliggyaa.github.io/img/avatar.png">
+<meta property="article:published_time" content="2023-12-14T03:45:40.000Z">
+<meta property="article:modified_time" content="2023-12-14T03:58:40.232Z">
 <meta property="article:author" content="fliggy">
-<meta property="article:tag" content="内网渗透">
+<meta property="article:tag" content="Java安全">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://fliggyaa.github.io/img/ameng.webp">
+<meta name="twitter:image" content="https://fliggyaa.github.io/img/avatar.png">
   
   
   
-  <title>内网渗透-简介 - fliggy</title>
+  <title>jndi注入 - fliggy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,13 +222,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/a.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/avatar.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="内网渗透-简介"></span>
+            <span id="subtitle" data-typed-text="jndi注入"></span>
           
         </div>
 
@@ -239,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-20 10:28" pubdate>
-          2023年11月20日 上午
+        <time datetime="2023-12-14 11:45" pubdate>
+          2023年12月14日 中午
         </time>
       </span>
     
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          913 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          22 分钟
+          8 分钟
         
       </span>
     
@@ -307,51 +307,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">内网渗透-简介</h1>
+            <h1 id="seo-header">jndi注入</h1>
             
             
               <div class="markdown-body">
                 
-                <p>你每天总是在计较失去了什么，得到了什么，比别人多得到了什么，比别人少获得了什么，你怎么会觉得这个世界是单纯且美好的呢。</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&emsp;&emsp;画个饼先，大概会花上两个月来更新这部分的基础理论，等换了新电脑，会更新一些靶场的内容，一起期待一下吧！</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>&emsp;&emsp;内网也叫局域网，是指在某一区域由多台计算机互相连接而成的计算机组。内网的情况往往比较复杂。</p>
-<h3 id="工作组"><a href="#工作组" class="headerlink" title="工作组"></a>工作组</h3><p>&emsp;&emsp;在一个大型单位中，可能存在着成百上千台计算机，他们相互连接组成局域网，如果不对它们进行分组，那么网络关系就会杂乱不堪，工作组的出现，成功解决了这个问题。它将局域网中不同的计算机按功能分别列入不同的工作组，使网络更有序。</p>
-<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>&emsp;&emsp;域是一台有安全边界的计算机集合（这里的安全边界指的是在两个域中，一个域中的用户无法访问另外一个域中的资源），更像是一个升级版的工作组。用户想要访问域内的资源，必须以合法的身份登录域，用户对域内的资源拥有什么样的权限，取决于用户在域内的身份。</p>
-<h3 id="域控制器"><a href="#域控制器" class="headerlink" title="域控制器"></a>域控制器</h3><p>&emsp;&emsp;DC（domain controller），域控制器是域中一台类似管理服务器的主机，它拥有管理域内其他主机的计算机权限，它负责所有本域内的计算和用户的验证工作，它是整个域的通信枢纽，域内所有用来验证身份的账号和密码哈希都存在域控制器中。所以，内网渗透的最终目标常常就是为了攻下域控服务器，即拿域控。</p>
-<h3 id="单域"><a href="#单域" class="headerlink" title="单域"></a>单域</h3><p>&emsp;&emsp;就是指只有一个域环境的网络，这里需要说明的是，一般在一个域中，至少会有两台域服务，一台作为DC，另一台作为备份DC。（没有把握的时候先日备用的，为自己争取跑路时间）</p>
-<h3 id="父域和子域"><a href="#父域和子域" class="headerlink" title="父域和子域"></a>父域和子域</h3><p>&emsp;&emsp;当存在多个域时，第一个域称为父域，各分部的域称为该域的子域。设置这样的模式的好处：</p>
-<p>1.减小了域之间信息交互的压力（域内信息交互不会压缩，域间信息交互可压缩）</p>
-<p>2.不同的子域可以指定特定的安全策略</p>
-<p><font color="red">&emsp;&emsp;父域中域名使用一个.表示一个层次，放在域名最后的子域称为最高级子域或一级子域，它面前的称为二级域</font></p>
-<p>&emsp;&emsp;如果baidu.com是一个父域，那么abc.baidu.com就是一级子域，aa.abc.baidu.com就是二级域。</p>
-<h3 id="域树"><a href="#域树" class="headerlink" title="域树"></a>域树</h3><p>&emsp;&emsp;域树时多个域通过建立信任关系组成的集合。当两个域内需要互相访问时，就需要建立信任关系。建立信任关系后，可以将父子域连接成树状格式，此时就可以实现互相访问。</p>
-<h3 id="域森林"><a href="#域森林" class="headerlink" title="域森林"></a>域森林</h3><p>&emsp;&emsp;域森林是指多个<strong>域树</strong>通过建立信任关系组成的集合。例如，当前域树aaa.net和域树aaa.com，两个本来是无法实现相互访问的，而当两个域树建立信任关系后，他们可以组成一个集合形式（域森林），实现相互访问。</p>
-<h3 id="域名服务器"><a href="#域名服务器" class="headerlink" title="域名服务器"></a>域名服务器</h3><p>&emsp;&emsp;<strong>域名服务器（Domian Name Server，简称DNS）是指用于实现域名和与之对应IP地址转换的服务器。简单的说，就是实现域名到IP地址的转换。</strong>同时，域的名字就是DNS的名字，因为域中计算机使用DNS来定位DC、服务器等计算机。</p>
-<h3 id="活动目录"><a href="#活动目录" class="headerlink" title="活动目录"></a>活动目录</h3><p>&emsp;&emsp;<strong>活动目录（Active Directory，简称AD）</strong>是指与环境中提供目录服务的组件。</p>
-<p>&emsp;&emsp;它用于存储有关网络对象（用户、组、计算机、共享资源等）的信息，目录服务是指帮助用户快速、准确地寻找其所需要的服务。为企业提供了网络环境的集中式管理机制。</p>
-<p>&emsp;&emsp;活动目录的逻辑结构包括阻止单元（ou）、域、域树、域森林。逻辑结构的定义是不考虑被管理对象的具体位置的阻止框架。</p>
-<p>&emsp;&emsp;活动目录的功能</p>
-<p><font color="green">1.账号集中管理：所有账号均存储在服务器中，以便执行命令和重置密码等。<br></font></p>
-<p><font color="green">2.软件集中管理：统一推送软件，安装打印机等。利用软件发布策略分部软件，可以让用户自由选择需要安装的软件。<br></font></p>
-<p><font color="green">3.环境集中管理：统一客户端桌面、IE、TCP&#x2F;IP协议等设置。<br></font></p>
-<p><font color="green">4.增强安全性：统一部署杀毒软件和病毒扫描任务、集中管理用户的计算机权限、统一指定密码策略等。<br></font></p>
-<p><font color="green">5.更可靠、更短的宕机时间：例如，利用活动目录控制用户访问权限，利用集群、负载均衡等技术对文件服务器进行容灾设置<br></font></p>
-<h3 id="域控与活动目录的区别"><a href="#域控与活动目录的区别" class="headerlink" title="域控与活动目录的区别"></a>域控与活动目录的区别</h3><p>&emsp;&emsp;活动目录数据库，即拥有层次结构的数据库，简称AD库。</p>
-<p>&emsp;&emsp;要实现域环境，其实就是要安装AD库。如果内网中一台计算机上安装了AD，那它就变成了<strong>DC（用于存储活动目录数据库的计算机，即域控）</strong></p>
-<h3 id="安全域的划分"><a href="#安全域的划分" class="headerlink" title="安全域的划分"></a>安全域的划分</h3><p>&emsp;&emsp;在一个用路由器连接的内网中，可以将网络划分为三个区域：内网、DMZ、外网</p>
-<h4 id="内网"><a href="#内网" class="headerlink" title="内网"></a>内网</h4><p>&emsp;&emsp;内网，拥有两个区：</p>
-<p>1.核心区（存储企业最重要的数据、文档等信息资产，往往只有很少的主机能访问）。</p>
-<p>2.办公区（公司员工日常的工作区，一般能够访问DMZ，部分主机可访问核心区）</p>
-<h4 id="DMZ"><a href="#DMZ" class="headerlink" title="DMZ"></a>DMZ</h4><p>&emsp;&emsp;DMZ（Demilitarized Zone，称为隔离区），其是一个非安全系统与安全系统之间的缓冲区，也就是说，DMZ一般位于内网和外部网络之间。这里主要用于对外提供服务，可以在此放置一些必须公开的服务器设施，例如企业Web服务器、FTP服务器和论坛服务器等。</p>
-<h4 id="外网"><a href="#外网" class="headerlink" title="外网"></a>外网</h4><p>&emsp;&emsp;互联网，安全级别最低。</p>
-<h4 id="三者的关系"><a href="#三者的关系" class="headerlink" title="三者的关系"></a>三者的关系</h4><p>&emsp;&emsp;在配置一个拥有DMZ的网络时，通常需要定义如下访问控制策略，以实现屏障功能。</p>
-<p><font color="red">1.内网可以访问外网：内网用户需要自由地访问外网<br></font></p>
-<p><font color="red">2.内网可以访问DMZ：此策略使内网用户可以使用或者管理DMZ中的服务器<br></font></p>
-<p><font color="red">3.外网不能访问内网：内网中存储的是公司内部数据，这些数据一般是不允许外网用户访问的（如果要访问，可以通过VPN的方式进行）<br></font></p>
-<p><font color="red">4.外网可以访问DMZ：因为DMZ中的服务器需要为外界提供服务，所以外网必须可以访问DMZ<br></font></p>
-<p><font color="red">5.DMZ不能访问内网：如果不执行此策略，当攻击者攻陷DMZ时，内网将无法受到保护<br></font></p>
-<p><font color="red">6.DMZ不能访问外网：此策略也有例外。如果DMZ区存在邮件服务器等就需要访问外网，否则无法正常工作<br></font></p>
-<p>&emsp;&emsp;可是实际情况真的像上面所列举的这么理想化吗？</p>
+                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h3 id="jndi"><a href="#jndi" class="headerlink" title="jndi"></a>jndi</h3><p>&emsp;&emsp;JNDI全称为Java命名和目录接口。我们可以理解为JNDI提供了两个服务，即命名服务和目录服务。</p>
+<p>&emsp;&emsp;JNDI(The java Naming and directory Interface,java命名和目录接口)是一组在Java应用中访问命名和目录服务器的API，命令服务将名称和对象联系起来，使得我们可以使用名称访问对象。</p>
+<p>这些命名&#x2F;目录服务提供者：</p>
+<p>&emsp;&emsp;RMI(java远程方法调用)</p>
+<p>&emsp;&emsp;LDAP(轻量级目录访问协议)</p>
+<p>&emsp;&emsp;DNS(域名服务) （可以用于探测漏洞是否存在）</p>
+<p>&emsp;&emsp;CORBA(公共对象请求代理体系结构，在安全中目前没有发现利用方式)</p>
+<h3 id="lookup"><a href="#lookup" class="headerlink" title="lookup"></a>lookup</h3><p>&emsp;&emsp;如果lookup参数可控的话，那么我们就可以传入恶意的url地址来控制受害者加载攻击者指定的恶意类。当我们指定一个恶意的url地址之后，受害者在获取完这个远程对象之后，开始调用恶意方法。但是在RMI中，调用远程方法，最终在服务端进行执行，只是把最终的结果以序列化的形式传递给客户端，也就是这里所说的受害者。当然，如果受害者内部存在漏洞组件存在反序列化漏洞的话，我们可以构造恶意的序列化对象，返回给客户端，当客户端在进行反序列化的时候，可以触发漏洞；如果目标组件不存在反序列化楼哦对那个，我们返回一个恶意对象，但是客户端本地没有这个class文件，当然也就不能成功获取到这个对象。</p>
+<h3 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h3><p>&emsp;&emsp;使用了lookup函数且lookup的参数可控</p>
+<p>&emsp;&emsp;利用相对应的版本</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>JDK6</th>
+<th>JDK7</th>
+<th>JDK8</th>
+<th>JDK11</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RMI可用</td>
+<td>6u132以下</td>
+<td>7u122以下</td>
+<td>8u113以下</td>
+<td>无</td>
+</tr>
+<tr>
+<td>LDAP可用</td>
+<td>6u211以下</td>
+<td>7u201以下</td>
+<td>8u191以下</td>
+<td>11.0.1以下</td>
+</tr>
+</tbody></table>
+<p>&emsp;&emsp;编译恶意类的时候注意和服务的JDK大版本的一致性</p>
+<h3 id="JNDI利用流程"><a href="#JNDI利用流程" class="headerlink" title="JNDI利用流程"></a>JNDI利用流程</h3><p><img src="/2023/12/14/2023-12-14-jndi%E6%B3%A8%E5%85%A5/image-1.png" srcset="/img/loading.gif" lazyload alt="jndi"></p>
+<h3 id="RMI利用流程"><a href="#RMI利用流程" class="headerlink" title="RMI利用流程"></a>RMI利用流程</h3><p><img src="/2023/12/14/2023-12-14-jndi%E6%B3%A8%E5%85%A5/image.png" srcset="/img/loading.gif" lazyload alt="RMI"></p>
+<p>&emsp;&emsp;注：与LDAP不同的是RMI在接收到payload之后会优先在本地寻找对应的类，如果能够找到则会优先执行本地的类，否则加载远程类。</p>
 
                 
               </div>
@@ -370,7 +369,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="category-chain-item">内网渗透</a>
+  <a href="/categories/Java%E5%AE%89%E5%85%A8/" class="category-chain-item">Java安全</a>
   
   
 
@@ -385,7 +384,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" class="print-no-link">#内网渗透</a>
+        <a href="/tags/Java%E5%AE%89%E5%85%A8/" class="print-no-link">#Java安全</a>
       
     </div>
   
@@ -397,8 +396,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>内网渗透-简介</div>
-      <div>https://fliggyaa.github.io/2023/11/20/2023-11-20-内网渗透/</div>
+      <div>jndi注入</div>
+      <div>https://fliggyaa.github.io/2023/12/14/2023-12-14-jndi注入/</div>
     </div>
     <div class="license-meta">
       
@@ -410,7 +409,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月20日</div>
+          <div>2023年12月14日</div>
         </div>
       
       
@@ -442,18 +441,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/14/2023-12-14-jndi%E6%B3%A8%E5%85%A5/" title="jndi注入">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">jndi注入</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/27/2023-10-27-jwt/" title="jwt（三）">
-                        <span class="hidden-mobile">jwt（三）</span>
+                      <a href="/2023/11/20/2023-11-20-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" title="内网渗透-简介">
+                        <span class="hidden-mobile">内网渗透-简介</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
